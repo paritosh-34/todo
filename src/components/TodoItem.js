@@ -13,8 +13,8 @@ class TodoItem extends Component {
             {this.props.todo.date.toLocaleDateString()}
           </div>
           <div className="todo-time">
-            {this.props.todo.time.from.toLocaleTimeString().slice(0, 5)} -{" "}
-            {this.props.todo.time.to.toLocaleTimeString().slice(0, 5)}
+            {this.props.todo.time.from.toLocaleTimeString().slice(0, 4)} -{" "}
+            {this.props.todo.time.to.toLocaleTimeString().slice(0, 4)}
           </div>
         </div>
       </div>
