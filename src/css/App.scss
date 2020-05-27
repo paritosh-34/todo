@@ -1,0 +1,90 @@
+@import "./Variables.scss";
+@import "./Todo.scss";
+@import "./Context.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: grid;
+  grid: "context todos" / minmax(100px, 300px) minmax(600px, 1fr);
+}
+
+.context {
+  grid-area: context;
+  position: sticky;
+  top: 0;
+}
+
+.todos {
+  grid-area: todos;
+}
+
+@media (max-width: 1024px) {
+  .todos {
+    width: 100%;
+    margin: 0;
+    font-size: 0.8em;
+  }
+  // .todo-grid {
+  //   grid-template-columns: 1fr;
+  // }
+  .context {
+    font-size: 0.8em;
+  }
+  .App {
+    grid: "context todos" / minmax(50px, 80px) minmax(300px, 1fr);
+  }
+
+  .heading {
+    flex-direction: column;
+  }
+  .logo {
+    font-size: 1.5em;
+  }
+  .collection-list {
+    padding-left: 10px;
+    text-align: center;
+  }
+  .collection {
+    display: none;
+  }
+  .identifier {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .todos {
+    font-size: 0.7em;
+    padding: 0.5em;
+    h1 {
+      font-size: 3em;
+    }
+  }
+  .todo-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+  .todo-heading {
+    margin: 5px;
+    margin-left: 10px;
+    font-size: 1.8em;
+  }
+
+  .context {
+    font-size: 0.6em;
+  }
+  .collection-list {
+    font-weight: bold;
+  }
+  .logo {
+    font-size: 1.7em;
+  }
+  .App {
+    grid: "context todos" / minmax(10px, 40px) minmax(50px, 1fr);
+  }
+}

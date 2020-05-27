@@ -1,0 +1,245 @@
+.todos {
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  padding: 1.25em;
+  font-size: 1em;
+}
+
+.todos h1 {
+  margin-bottom: 25px;
+  font-size: 4em;
+}
+
+.todo-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(350px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2em;
+}
+
+.todo-item {
+  border: 2px solid #eeeeee;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 0.6em;
+  cursor: pointer;
+  -webkit-transition: -webkit-box-shadow 150ms ease-in;
+  transition: -webkit-box-shadow 150ms ease-in;
+  transition: box-shadow 150ms ease-in;
+  transition: box-shadow 150ms ease-in, -webkit-box-shadow 150ms ease-in;
+}
+
+.todo-item:hover {
+  -webkit-box-shadow: 5px 5px 5px #eeeeee, -5px 5px 5px #eeeeee;
+          box-shadow: 5px 5px 5px #eeeeee, -5px 5px 5px #eeeeee;
+}
+
+.todo-heading {
+  margin: 15px;
+  font-size: 2em;
+}
+
+.todo-desc {
+  margin-bottom: 30px;
+  padding: 0.9em;
+  padding-top: 0px;
+  overflow: hidden;
+}
+
+.todo-date-time-wrapper {
+  margin: 0.9em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-date,
+.todo-time {
+  color: #8b8989;
+}
+
+.context {
+  background-color: #060608;
+  color: white;
+  height: 100vh;
+}
+
+.context ul {
+  padding: 10px 0px;
+  margin: 10px 0px;
+  margin-left: 0px;
+  width: 100%;
+}
+
+.collection-list {
+  position: relative;
+  list-style: none;
+  padding: 20px 10px;
+  padding-left: 80px;
+  font-size: 1.3em;
+  cursor: pointer;
+  -webkit-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+}
+
+.collection-list:hover {
+  background-color: rgba(236, 236, 236, 0.24);
+  font-size: 1.5em;
+}
+
+.identifier {
+  display: none;
+}
+
+.heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+
+.menu {
+  position: relative;
+  color: white;
+  margin: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(236, 236, 236, 0.24);
+  border-radius: 25px;
+  -webkit-transform: scaleX(0) scaleY(0);
+          transform: scaleX(0) scaleY(0);
+  -webkit-transition: -webkit-transform 150ms ease-in;
+  transition: -webkit-transform 150ms ease-in;
+  transition: transform 150ms ease-in;
+  transition: transform 150ms ease-in, -webkit-transform 150ms ease-in;
+}
+
+.menu:hover::before {
+  -webkit-transform: scaleX(1) scaleY(1);
+          transform: scaleX(1) scaleY(1);
+}
+
+.logo {
+  font-size: 2em;
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.App {
+  display: -ms-grid;
+  display: grid;
+  grid: "context todos"/minmax(100px, 300px) minmax(600px, 1fr);
+}
+
+.context {
+  grid-area: context;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.todos {
+  grid-area: todos;
+}
+
+@media (max-width: 1024px) {
+  .todos {
+    width: 100%;
+    margin: 0;
+    font-size: 0.8em;
+  }
+  .context {
+    font-size: 0.8em;
+  }
+  .App {
+    grid: "context todos"/minmax(50px, 80px) minmax(300px, 1fr);
+  }
+  .heading {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .logo {
+    font-size: 1.5em;
+  }
+  .collection-list {
+    padding-left: 10px;
+    text-align: center;
+  }
+  .collection {
+    display: none;
+  }
+  .identifier {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .todos {
+    font-size: 0.7em;
+    padding: 0.5em;
+  }
+  .todos h1 {
+    font-size: 3em;
+  }
+  .todo-grid {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+  .todo-heading {
+    margin: 5px;
+    margin-left: 10px;
+    font-size: 1.8em;
+  }
+  .context {
+    font-size: 0.6em;
+  }
+  .collection-list {
+    font-weight: bold;
+  }
+  .logo {
+    font-size: 1.7em;
+  }
+  .App {
+    grid: "context todos"/minmax(10px, 40px) minmax(50px, 1fr);
+  }
+}
+/*# sourceMappingURL=App.css.map */

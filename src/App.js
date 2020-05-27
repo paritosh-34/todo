@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Todo from "./components/Todo";
+import Context from "./components/Context";
+// import Calender from "./components/Calender";
+import todosData from "./Data";
+import "./css/App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    const tds = todosData.collections.map((collection) => {
+      collection.active = false;
+      return collection;
+    });
+    tds[0].active = true;
+
+    this.state = {
+      collections: tds,
+    };
+
+    this.changeCollection = this.changeCollection.bind(this);
+  }
+
+  changeCollection(id) {
+    console.log(id);
+
+    this.setState((prevState) => {
+      const updatedCollections = prevState.collections.map((collection) => {
+        if (collection.active) collection.active = false;
+        if (collection.id === id) collection.active = true;
+        return collection;
+      });
+
+      return updatedCollections;
+    });
+  }
+  render() {
+    return (
+      <div className="App">
+        <Context
+          collections={this.state.collections}
+          changeCollection={this.changeCollection}
+        />
+        <Todo
+          collection={
+            this.state.collections.filter((item) => item.active === true)[0]
+          }
+        />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,0 +1,56 @@
+@import "./Variables.scss";
+
+.todos {
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  padding: 1.25em;
+  font-size: 1em;
+  h1 {
+    margin-bottom: 25px;
+    font-size: 4em;
+  }
+}
+
+.todo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2em;
+}
+
+.todo-item {
+  border: 2px solid $border-color;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 0.6em;
+  cursor: pointer;
+  transition: box-shadow 150ms ease-in;
+}
+
+.todo-item:hover {
+  box-shadow: 5px 5px 5px $shadow-color, -5px 5px 5px $shadow-color;
+}
+
+.todo-heading {
+  margin: 15px;
+  font-size: 2em;
+}
+
+.todo-desc {
+  margin-bottom: 30px;
+  padding: 0.9em;
+  padding-top: 0px;
+  overflow: hidden;
+}
+
+.todo-date-time-wrapper {
+  margin: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-date,
+.todo-time {
+  color: $helper-color;
+}
