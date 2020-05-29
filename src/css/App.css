@@ -314,7 +314,8 @@
   display: -ms-grid;
   display: grid;
   grid: "context todos"/minmax(100px, 300px) minmax(600px, 1fr);
-  height: 100vh;
+  min-height: 100vh;
+  overflow: auto;
 }
 
 .context {
