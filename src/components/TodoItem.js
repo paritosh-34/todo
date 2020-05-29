@@ -17,13 +17,15 @@ class TodoItem extends Component {
   };
 
   close = () => {
+    console.log("close");
     this.setState({
       opened: false,
     });
   };
 
-  check = () => {
-    console.log("check");
+  check = (event) => {
+    console.log(event.target.className);
+    if (event.target.className == "active-wrapper active") this.close();
   };
 
   pasteAsPlainText = (event) => {
@@ -39,6 +41,7 @@ class TodoItem extends Component {
         className={
           this.state.opened ? "active-wrapper active" : "active-wrapper"
         }
+        onClick={(event) => this.check(event)}
       >
         <div className="todo-item" onClick={this.open}>
           <div className="todo-heading-desc-wrapper">
