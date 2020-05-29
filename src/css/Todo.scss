@@ -35,8 +35,10 @@
     opacity: 0.4;
     cursor: pointer;
   }
-  span:hover {
-    opacity: 0.7;
+  @media (min-width: 1025px) {
+    span:hover {
+      opacity: 0.7;
+    }
   }
   label::after {
     content: "";
@@ -72,9 +74,11 @@
     transition: font-size 150ms ease-in;
   }
 
-  span:hover {
-    font-size: 600%;
-    background-color: $hover-color-light;
+  @media (min-width: 1025px) {
+    span:hover {
+      font-size: 600%;
+      background-color: $hover-color-light;
+    }
   }
 }
 
@@ -95,8 +99,10 @@
   transition: box-shadow 150ms ease-in;
 }
 
-.todo-item:hover {
-  box-shadow: 5px 5px 5px $border-color, -5px 5px 5px $border-color;
+@media (min-width: 1025px) {
+  .todo-item:hover {
+    box-shadow: 5px 5px 5px $border-color, -5px 5px 5px $border-color;
+  }
 }
 
 .todo-heading {

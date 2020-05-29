@@ -43,8 +43,10 @@
   cursor: pointer;
 }
 
-.todos-title span:hover {
-  opacity: 0.7;
+@media (min-width: 1025px) {
+  .todos-title span:hover {
+    opacity: 0.7;
+  }
 }
 
 .todos-title label::after {
@@ -91,9 +93,11 @@
   transition: font-size 150ms ease-in;
 }
 
-.add span:hover {
-  font-size: 600%;
-  background-color: #fafafa;
+@media (min-width: 1025px) {
+  .add span:hover {
+    font-size: 600%;
+    background-color: #fafafa;
+  }
 }
 
 .todo-grid {
@@ -125,9 +129,11 @@
   transition: box-shadow 150ms ease-in, -webkit-box-shadow 150ms ease-in;
 }
 
-.todo-item:hover {
-  -webkit-box-shadow: 5px 5px 5px #eeeeee, -5px 5px 5px #eeeeee;
-          box-shadow: 5px 5px 5px #eeeeee, -5px 5px 5px #eeeeee;
+@media (min-width: 1025px) {
+  .todo-item:hover {
+    -webkit-box-shadow: 5px 5px 5px #eeeeee, -5px 5px 5px #eeeeee;
+            box-shadow: 5px 5px 5px #eeeeee, -5px 5px 5px #eeeeee;
+  }
 }
 
 .todo-heading {

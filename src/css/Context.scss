@@ -36,11 +36,13 @@
   }
 }
 
-.collection-list button:hover,
-.collection-list button:focus {
-  background-color: rgba(236, 236, 236, 0.24);
-  font-size: 1.5em;
-  outline: none;
+@media (min-width: 1025px) {
+  .collection-list button:hover,
+  .collection-list button:focus {
+    background-color: rgba(236, 236, 236, 0.24);
+    font-size: 1.5em;
+    outline: none;
+  }
 }
 
 .hide {
@@ -88,9 +90,10 @@
   transform: scaleX(0) scaleY(0);
   transition: transform 150ms ease-in;
 }
-
-.menu:hover::before {
-  transform: scaleX(1) scaleY(1);
+@media (min-width: 1025px) {
+  .menu:hover::before {
+    transform: scaleX(1) scaleY(1);
+  }
 }
 
 .logo {
