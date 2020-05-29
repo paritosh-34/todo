@@ -124,6 +124,13 @@
   gap: 2em;
 }
 
+.block {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
 .todo-item {
   border: 2px solid #eeeeee;
   border-radius: 10px;
@@ -138,7 +145,6 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  cursor: pointer;
   -webkit-transition: -webkit-box-shadow 150ms ease-in;
   transition: -webkit-box-shadow 150ms ease-in;
   transition: box-shadow 150ms ease-in;
@@ -155,6 +161,7 @@
 .todo-heading {
   padding: 15px;
   font-size: 2em;
+  border: none;
 }
 
 .todo-desc {
@@ -185,6 +192,66 @@
   color: #8b8989;
 }
 
+.close {
+  display: none;
+}
+
+.active-wrapper {
+  position: relative;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+}
+
+.active {
+  position: fixed;
+  border: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 2;
+}
+
+.active .block {
+  display: none;
+}
+
+.active .todo-item {
+  background-color: white;
+  border: none;
+  cursor: auto;
+  max-width: 70%;
+}
+
+.active .todo-item:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.active .close {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.active .close span {
+  font-size: 45px;
+  color: white;
+}
+
 .context {
   background-color: #060608;
   color: white;
@@ -196,6 +263,13 @@
   margin: 10px 0px;
   margin-left: 0px;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .collection-list {
@@ -207,7 +281,7 @@
   border: none;
   background: transparent;
   padding: 20px 10px;
-  padding-left: 80px;
+  text-align: center;
   color: white;
   width: 100%;
   height: 100%;
@@ -216,11 +290,23 @@
   transition: all 200ms ease-in;
   cursor: pointer;
   outline: none;
-  text-align: unset;
 }
 
 .collection-list button::-moz-focus-inner {
   border: 0;
+}
+
+#add {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  background-color: "rgba(255, 255, 255, 0.15)";
+  text-align: "center";
+}
+
+#add button {
+  padding-left: 10px;
+  text-align: center;
 }
 
 @media (min-width: 1025px) {
@@ -250,6 +336,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -299,8 +386,11 @@
 
 .logo {
   font-size: 2em;
-  margin-left: 5px;
-  margin-bottom: 3px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  pointer-events: none;
 }
 
 * {
@@ -346,6 +436,7 @@
             flex-direction: column;
   }
   .logo {
+    position: static;
     font-size: 1.5em;
   }
   .collection-list {

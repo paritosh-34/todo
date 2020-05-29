@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 class Todo extends Component {
   render() {
     const todoItems = this.props.collection.todos.map((todo) => (
-      <TodoItem key={todo.id} todo={todo} />
+      <TodoItem key={todo.id} todo={todo} handleEdit={this.props.handleEdit} />
     ));
     return (
       <div className="todos">

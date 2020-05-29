@@ -38,7 +38,14 @@ class Context extends Component {
           <div className="logo">To-Do</div>
         </div>
 
-        <ul>{mylist}</ul>
+        <ul>
+          <li className="collection-list" id="add">
+            <button>
+              <span className="material-icons">add</span>
+            </button>
+          </li>
+          {mylist}
+        </ul>
       </div>
     );
   }

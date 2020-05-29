@@ -18,13 +18,9 @@ class App extends Component {
     this.state = {
       collections: tds,
     };
-
-    this.changeCollection = this.changeCollection.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
   }
 
-  changeCollection(id) {
+  changeCollection = (id) => {
     this.setState((prevState) => {
       const updatedCollections = prevState.collections.map((collection) => {
         if (collection.active) collection.active = false;
@@ -34,9 +30,9 @@ class App extends Component {
 
       return updatedCollections;
     });
-  }
+  };
 
-  handleChange(event, id) {
+  handleChange = (event, id) => {
     const { value } = event.target;
     this.setState((prevState) => {
       const updatedCollections = prevState.collections.map((collection) => {
@@ -45,9 +41,9 @@ class App extends Component {
       });
       return updatedCollections;
     });
-  }
+  };
 
-  handleBlur(event, id) {
+  handleBlur = (event, id) => {
     const { value } = event.target;
     if (!value) {
       this.setState((prevState) => {
@@ -58,7 +54,37 @@ class App extends Component {
         return updatedCollections;
       });
     }
-  }
+  };
+
+  trimSpaces = (string) => {
+    return string
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&gt;/g, ">")
+      .replace(/&lt;/g, "<");
+    // .replace("<div><br></div>", "\n");
+  };
+
+  handleEdit = (event, id, property) => {
+    const { value } = event.target;
+    console.log(value);
+    const collection_id = this.state.collections.filter(
+      (item) => item.active === true
+    )[0].id;
+
+    this.setState((prevState) => {
+      const updatedCollections = prevState.collections.map((collection) => {
+        if (collection.id === collection_id) {
+          collection.todos.map((todo) => {
+            if (todo.id === id) todo[property] = this.trimSpaces(value);
+            return todo;
+          });
+        }
+        return collection;
+      });
+      return updatedCollections;
+    });
+  };
 
   render() {
     return (
@@ -73,6 +99,7 @@ class App extends Component {
           }
           handleChange={this.handleChange}
           handleBlur={this.handleBlur}
+          handleEdit={this.handleEdit}
         />
       </div>
     );
