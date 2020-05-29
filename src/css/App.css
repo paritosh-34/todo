@@ -172,7 +172,7 @@
 .context {
   background-color: #060608;
   color: white;
-  height: 100vh;
+  height: 100%;
 }
 
 .context ul {
@@ -298,12 +298,11 @@
   display: -ms-grid;
   display: grid;
   grid: "context todos"/minmax(100px, 300px) minmax(600px, 1fr);
+  height: 100vh;
 }
 
 .context {
   grid-area: context;
-  position: -webkit-sticky;
-  position: sticky;
   top: 0;
 }
 
