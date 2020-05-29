@@ -6,27 +6,30 @@
   margin: auto;
   padding: 1.25em;
   font-size: 1em;
+  overflow: hidden;
 }
 
 .todos-title {
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 25px;
 
   input {
     font-size: 4em;
-    position: absolute;
     border: none;
   }
   input:focus {
     outline: none;
 
-    & + label span {
-      opacity: 0;
+    & + div + label span {
+      display: none;
     }
-    & + label::after {
+    & + div + label + div span {
+      z-index: 2;
+      font-size: 50px;
+    }
+    & + div {
       width: 100%;
     }
   }
@@ -40,16 +43,31 @@
       opacity: 0.7;
     }
   }
-  label::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    border-bottom: 1px solid $background-black;
-    height: 100%;
-    transition: all 250ms ease-in;
+}
+
+.edit {
+  position: absolute;
+  right: 0;
+}
+
+.done {
+  position: absolute;
+  right: 0;
+
+  span {
+    font-size: 0;
   }
+}
+
+.bottom-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  pointer-events: none;
+  border-bottom: 1px solid $background-black;
+  height: 100%;
+  transition: all 250ms ease-in;
 }
 
 .input-text {

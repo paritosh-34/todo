@@ -4,6 +4,7 @@
   margin: auto;
   padding: 1.25em;
   font-size: 1em;
+  overflow: hidden;
 }
 
 .todos-title {
@@ -14,15 +15,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   margin-bottom: 25px;
 }
 
 .todos-title input {
   font-size: 4em;
-  position: absolute;
   border: none;
 }
 
@@ -30,11 +27,16 @@
   outline: none;
 }
 
-.todos-title input:focus + label span {
-  opacity: 0;
+.todos-title input:focus + div + label span {
+  display: none;
 }
 
-.todos-title input:focus + label::after {
+.todos-title input:focus + div + label + div span {
+  z-index: 2;
+  font-size: 50px;
+}
+
+.todos-title input:focus + div {
   width: 100%;
 }
 
@@ -49,12 +51,26 @@
   }
 }
 
-.todos-title label::after {
-  content: "";
+.edit {
+  position: absolute;
+  right: 0;
+}
+
+.done {
+  position: absolute;
+  right: 0;
+}
+
+.done span {
+  font-size: 0;
+}
+
+.bottom-line {
   position: absolute;
   top: 0;
   left: 0;
   width: 0%;
+  pointer-events: none;
   border-bottom: 1px solid #060608;
   height: 100%;
   -webkit-transition: all 250ms ease-in;

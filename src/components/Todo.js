@@ -9,11 +9,6 @@ class Todo extends Component {
     return (
       <div className="todos">
         <div className="todos-title">
-          <div className="input-text">
-            {!this.props.collection.name.trim()
-              ? "NoTitle"
-              : this.props.collection.name}
-          </div>
           <input
             type="text"
             name="todos-title"
@@ -27,13 +22,17 @@ class Todo extends Component {
             }}
             value={this.props.collection.name}
           />
-          <label htmlFor="todos-title">
+          <div className="bottom-line"></div>
+          <label htmlFor="todos-title" className="edit">
             <span className="material-icons">edit</span>
           </label>
+          <div className="done">
+            <span className="material-icons">done</span>
+          </div>
         </div>
         <div className="todo-grid">
           <div className="add">
-            <span class="material-icons">add</span>
+            <span className="material-icons">add</span>
           </div>
           {todoItems}
         </div>
