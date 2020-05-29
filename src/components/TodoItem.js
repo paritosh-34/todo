@@ -4,10 +4,12 @@ class TodoItem extends Component {
   render() {
     return (
       <div className="todo-item">
-        <h3 className="todo-heading">{this.props.todo.heading}</h3>
-        <p className="todo-desc" ref={(element) => (this.divRef = element)}>
-          {this.props.todo.desc}
-        </p>
+        <div className="todo-heading-desc-wrapper">
+          <h3 className="todo-heading">{this.props.todo.heading}</h3>
+          <p className="todo-desc" ref={(element) => (this.divRef = element)}>
+            {this.props.todo.desc}
+          </p>
+        </div>
         <div className="todo-date-time-wrapper">
           <div className="todo-date">
             {this.props.todo.date.toLocaleDateString()}

@@ -11,7 +11,7 @@ const todosData = {
           desc: "This should be done fast.",
           date: new Date(2020, 5, 20),
           time: {
-            from: new Date(2020, 5, 20, 6, 24, 0),
+            from: new Date(2020, 5, 20, 6, 4, 0),
             to: new Date(2020, 5, 20, 7, 45, 0),
           },
           completed: true,

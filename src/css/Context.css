@@ -14,21 +14,47 @@
 .collection-list {
   position: relative;
   list-style: none;
-  padding: 20px 10px;
-  padding-left: 80px;
-  font-size: 1.3em;
-  cursor: pointer;
-  -webkit-transition: all 200ms ease-in;
-  transition: all 200ms ease-in;
 }
 
-.collection-list:hover {
+.collection-list button {
+  border: none;
+  background: transparent;
+  padding: 20px 10px;
+  padding-left: 80px;
+  color: white;
+  width: 100%;
+  height: 100%;
+  font-size: 1.3em;
+  -webkit-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+  cursor: pointer;
+  outline: none;
+  text-align: unset;
+}
+
+.collection-list button::-moz-focus-inner {
+  border: 0;
+}
+
+.collection-list button:hover,
+.collection-list button:focus {
   background-color: rgba(236, 236, 236, 0.24);
   font-size: 1.5em;
+  outline: none;
+}
+
+.hide .identifier {
+  display: block;
+}
+
+.hide .colllection {
+  display: none;
 }
 
 .identifier {
   display: none;
+  font-size: 1.2em;
+  text-transform: uppercase;
 }
 
 .heading {

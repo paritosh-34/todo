@@ -20,11 +20,11 @@ class App extends Component {
     };
 
     this.changeCollection = this.changeCollection.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   changeCollection(id) {
-    console.log(id);
-
     this.setState((prevState) => {
       const updatedCollections = prevState.collections.map((collection) => {
         if (collection.active) collection.active = false;
@@ -35,6 +35,31 @@ class App extends Component {
       return updatedCollections;
     });
   }
+
+  handleChange(event, id) {
+    const { value } = event.target;
+    this.setState((prevState) => {
+      const updatedCollections = prevState.collections.map((collection) => {
+        if (collection.id === id) collection.name = value;
+        return collection;
+      });
+      return updatedCollections;
+    });
+  }
+
+  handleBlur(event, id) {
+    const { value } = event.target;
+    if (!value) {
+      this.setState((prevState) => {
+        const updatedCollections = prevState.collections.map((collection) => {
+          if (collection.id === id) collection.name = "null";
+          return collection;
+        });
+        return updatedCollections;
+      });
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -46,6 +71,8 @@ class App extends Component {
           collection={
             this.state.collections.filter((item) => item.active === true)[0]
           }
+          handleChange={this.handleChange}
+          handleBlur={this.handleBlur}
         />
       </div>
     );

@@ -14,16 +14,14 @@ class Context extends Component {
           onClick={() => this.props.changeCollection(collection.id)}
           key={"collection-list-" + collection.id}
         >
-          <span
-            key={"identifier-" + collection.id}
-            className="identifier"
-            title={collection.name}
-          >
-            {collection.name[0]}
-          </span>
-          <span key={collection.id} className="collection">
-            {collection.name}
-          </span>
+          <button title={collection.name}>
+            <span key={"identifier-" + collection.id} className="identifier">
+              {collection.name[0]}
+            </span>
+            <span key={collection.id} className="collection">
+              {collection.name}
+            </span>
+          </button>
         </li>
       );
     });
