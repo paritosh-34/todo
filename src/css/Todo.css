@@ -159,15 +159,16 @@
 }
 
 .todo-heading {
-  padding: 15px;
+  padding: 5px 15px;
+  margin: 10px 0;
   font-size: 2em;
   border: none;
 }
 
 .todo-desc {
+  padding: 7px 17px;
+  margin: 10px 0;
   margin-bottom: 30px;
-  padding: 17px;
-  padding-top: 0px;
   overflow: hidden;
 }
 
