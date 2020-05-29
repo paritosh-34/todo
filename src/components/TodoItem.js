@@ -40,8 +40,7 @@ class TodoItem extends Component {
           this.state.opened ? "active-wrapper active" : "active-wrapper"
         }
       >
-        <div className="block" onClick={this.open}></div>
-        <div className="todo-item">
+        <div className="todo-item" onClick={this.open}>
           <div className="todo-heading-desc-wrapper">
             <ContentEditable
               html={this.props.todo.heading}
