@@ -24,6 +24,12 @@
   grid-area: todos;
 }
 
+[contenteditable="true"]:empty:before {
+  content: attr(placeholder);
+  display: block;
+  color: #aaa;
+}
+
 @media (max-width: 1024px) {
   .todos {
     width: 100%;

@@ -21,6 +21,7 @@ class App extends Component {
   }
 
   changeCollection = (id) => {
+    // This Funtion is to change collections
     this.setState((prevState) => {
       const updatedCollections = prevState.collections.map((collection) => {
         if (collection.active) collection.active = false;
@@ -33,6 +34,7 @@ class App extends Component {
   };
 
   handleChange = (event, id) => {
+    // Handles the collection title change
     const { value } = event.target;
     this.setState((prevState) => {
       const updatedCollections = prevState.collections.map((collection) => {
@@ -44,6 +46,7 @@ class App extends Component {
   };
 
   handleBlur = (event, id) => {
+    // Handles the collection title change on Blur
     const { value } = event.target;
     if (!value) {
       this.setState((prevState) => {
@@ -66,8 +69,8 @@ class App extends Component {
   };
 
   handleEdit = (event, id, property) => {
+    // Handles todos edits
     const { value } = event.target;
-    console.log(value);
     const collection_id = this.state.collections.filter(
       (item) => item.active === true
     )[0].id;
@@ -76,7 +79,10 @@ class App extends Component {
       const updatedCollections = prevState.collections.map((collection) => {
         if (collection.id === collection_id) {
           collection.todos.map((todo) => {
-            if (todo.id === id) todo[property] = this.trimSpaces(value);
+            if (todo.id === id) {
+              if (property === "date") todo[property] = new Date(value);
+              else todo[property] = this.trimSpaces(value);
+            }
             return todo;
           });
         }
@@ -84,6 +90,40 @@ class App extends Component {
       });
       return updatedCollections;
     });
+  };
+
+  handleAdd = (event, id) => {
+    const newFocus = React.createRef();
+
+    const collectiontodos = this.state.collections.filter(
+      (collection) => collection.id === id
+    )[0];
+
+    const newTodo = {
+      id: collectiontodos.todos.length + 1,
+      heading: "",
+      desc: "",
+      date: new Date(),
+      time: {
+        from: new Date(),
+        to: new Date(),
+      },
+      completed: false,
+      ref: newFocus,
+    };
+    const tfg = [...collectiontodos.todos, newTodo];
+
+    this.setState((prevState) => {
+      const updatedCollections = prevState.collections.map((collection) => {
+        if (collection.id === id) {
+          collection.todos = tfg;
+        }
+        return collection;
+      });
+      return updatedCollections;
+    });
+
+    // newFocus.current.focus();
   };
 
   render() {
@@ -100,6 +140,8 @@ class App extends Component {
           handleChange={this.handleChange}
           handleBlur={this.handleBlur}
           handleEdit={this.handleEdit}
+          handleAdd={this.handleAdd}
+          firstEditable={this.firstEditable}
         />
       </div>
     );

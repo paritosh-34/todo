@@ -4,7 +4,12 @@ import TodoItem from "./TodoItem";
 class Todo extends Component {
   render() {
     const todoItems = this.props.collection.todos.map((todo) => (
-      <TodoItem key={todo.id} todo={todo} handleEdit={this.props.handleEdit} />
+      <TodoItem
+        key={todo.id}
+        todo={todo}
+        handleEdit={this.props.handleEdit}
+        firstEditable={this.props.firstEditable}
+      />
     ));
     return (
       <div className="todos">
@@ -31,7 +36,12 @@ class Todo extends Component {
           </div>
         </div>
         <div className="todo-grid">
-          <div className="add">
+          <div
+            className="add"
+            onClick={(event) =>
+              this.props.handleAdd(event, this.props.collection.id)
+            }
+          >
             <span className="material-icons">add</span>
           </div>
           {todoItems}

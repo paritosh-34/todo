@@ -2,32 +2,6 @@ import React, { Component } from "react";
 import ContentEditable from "react-contenteditable";
 
 class TodoItem extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      opened: false,
-    };
-  }
-
-  open = () => {
-    this.setState({
-      opened: true,
-    });
-  };
-
-  close = () => {
-    console.log("close");
-    this.setState({
-      opened: false,
-    });
-  };
-
-  check = (event) => {
-    console.log(event.target.className);
-    if (event.target.className == "active-wrapper active") this.close();
-  };
-
   pasteAsPlainText = (event) => {
     event.preventDefault();
 
@@ -35,57 +9,63 @@ class TodoItem extends Component {
     document.execCommand("insertHTML", false, text);
   };
 
-  render() {
-    return (
-      <div
-        className={
-          this.state.opened ? "active-wrapper active" : "active-wrapper"
-        }
-        onClick={(event) => this.check(event)}
-      >
-        <div className="todo-item" onClick={this.open}>
-          <div className="todo-heading-desc-wrapper">
-            <ContentEditable
-              html={this.props.todo.heading}
-              disabled={false}
-              onPaste={this.pasteAsPlainText}
-              onChange={(event) =>
-                this.props.handleEdit(event, this.props.todo.id, "heading")
-              }
-              tagName="h3"
-              className="todo-heading"
-            />
+  componentDidMount = () =>
+    this.props.todo.ref ? this.props.todo.ref.current.focus() : null;
 
-            <ContentEditable
-              html={this.props.todo.desc}
-              disabled={false}
-              onPaste={this.pasteAsPlainText}
+  render() {
+    // console.log(this.props.todo.heading ? null : this.current.focus());
+    return (
+      <div className="todo-item">
+        <div className="todo-heading-desc-wrapper">
+          <ContentEditable
+            html={this.props.todo.heading}
+            disabled={false}
+            onPaste={this.pasteAsPlainText}
+            onChange={(event) =>
+              this.props.handleEdit(event, this.props.todo.id, "heading")
+            }
+            tagName="h3"
+            className="todo-heading"
+            placeholder="Title"
+            innerRef={this.props.todo.ref}
+          />
+
+          <ContentEditable
+            html={this.props.todo.desc ? this.props.todo.desc : " "}
+            disabled={false}
+            onPaste={this.pasteAsPlainText}
+            onChange={(event) =>
+              this.props.handleEdit(event, this.props.todo.id, "desc")
+            }
+            tagName="p"
+            className="todo-desc"
+          />
+        </div>
+
+        <div className="todo-date-time-wrapper">
+          <div className="todo-date">
+            <input
+              type="date"
+              name="todo-date"
+              id="todo-date"
+              value={this.props.todo.date.toISOString().substr(0, 10)}
               onChange={(event) =>
-                this.props.handleEdit(event, this.props.todo.id, "desc")
+                this.props.handleEdit(event, this.props.todo.id, "date")
               }
-              tagName="p"
-              className="todo-desc"
             />
           </div>
-          <div className="todo-date-time-wrapper">
-            <div className="todo-date">
-              {this.props.todo.date.toLocaleDateString()}
-            </div>
-            <div className="todo-time">
-              {this.props.todo.time.from.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}{" "}
-              -{" "}
-              {this.props.todo.time.to.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </div>
+
+          <div className="todo-time">
+            {this.props.todo.time.from.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}{" "}
+            -{" "}
+            {this.props.todo.time.to.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </div>
-        </div>
-        <div className="close" onClick={this.close}>
-          <span className="material-icons">close</span>
         </div>
       </div>
     );
