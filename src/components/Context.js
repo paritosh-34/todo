@@ -3,10 +3,7 @@ import React, { Component } from "react";
 class Context extends Component {
   render() {
     const mylist = this.props.collections.map((collection) => {
-      const styling = {
-        backgroundColor: collection.color,
-      };
-
+      const styling = { backgroundColor: collection.color };
       return (
         <li
           className="collection-list"
@@ -40,7 +37,7 @@ class Context extends Component {
 
         <ul>
           <li className="collection-list" id="add">
-            <button>
+            <button onClick={this.props.addCollection}>
               <span className="material-icons">add</span>
             </button>
           </li>
