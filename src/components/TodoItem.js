@@ -9,11 +9,13 @@ class TodoItem extends Component {
     document.execCommand("insertHTML", false, text);
   };
 
-  componentDidMount = () =>
-    this.props.todo.ref ? this.props.todo.ref.current.focus() : null;
+  componentDidMount = () => {
+    if (this.props.todo.ref) this.props.todo.ref.current.focus();
+  };
+
+  handleEnter = (event) => (event.keyCode === 13 ? event.target.blur() : null);
 
   render() {
-    // console.log(this.props.todo.heading ? null : this.current.focus());
     return (
       <div className="todo-item">
         <div className="todo-heading-desc-wrapper">
@@ -31,7 +33,7 @@ class TodoItem extends Component {
           />
 
           <ContentEditable
-            html={this.props.todo.desc ? this.props.todo.desc : " "}
+            html={this.props.todo.desc}
             disabled={false}
             onPaste={this.pasteAsPlainText}
             onChange={(event) =>
@@ -39,6 +41,7 @@ class TodoItem extends Component {
             }
             tagName="p"
             className="todo-desc"
+            placeholder="----"
           />
         </div>
 
@@ -47,7 +50,6 @@ class TodoItem extends Component {
             <input
               type="date"
               name="todo-date"
-              id="todo-date"
               value={this.props.todo.date.toISOString().substr(0, 10)}
               onChange={(event) =>
                 this.props.handleEdit(event, this.props.todo.id, "date")
@@ -56,15 +58,35 @@ class TodoItem extends Component {
           </div>
 
           <div className="todo-time">
-            {this.props.todo.time.from.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}{" "}
+            <input
+              type="text"
+              value={this.props.todo.time.from}
+              className="todo-time-editable"
+              placeholder="hh:mm"
+              onChange={(event) =>
+                this.props.handleEdit(event, this.props.todo.id, "timefrom ")
+              }
+              onKeyDown={(event) => {
+                console.log(event.target.value.length);
+                event.target.style.width = event.target.value.length + "ch";
+                this.handleEnter(event);
+              }}
+            />{" "}
             -{" "}
-            {this.props.todo.time.to.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+            <input
+              type="text"
+              value={this.props.todo.time.to}
+              className="todo-time-editable"
+              placeholder="hh:mm"
+              onChange={(event) =>
+                this.props.handleEdit(event, this.props.todo.id, "timeto ")
+              }
+              onKeyDown={(event) => {
+                console.log(event.target.value.length);
+                event.target.style.width = event.target.value.length + "ch";
+                this.handleEnter(event);
+              }}
+            />
           </div>
         </div>
       </div>

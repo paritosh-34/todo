@@ -154,3 +154,18 @@
 .todo-date input {
   padding: 5px;
 }
+
+.todo-time-editable {
+  min-width: 5ch;
+  transition: all 50ms ease;
+  overflow: hidden;
+  color: inherit;
+  border: none;
+  width: 5ch;
+}
+
+.todo-time-editable:focus {
+  min-width: calc(10px + 5ch);
+  padding: 5px;
+  font-size: 1.5em;
+}

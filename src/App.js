@@ -11,6 +11,19 @@ class App extends Component {
 
     const tds = todosData.collections.map((collection) => {
       collection.active = false;
+
+      collection.todos.map((todo) => {
+        todo.time.from = todo.time.from.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        todo.time.to = todo.time.to.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        return todo;
+      });
+
       return collection;
     });
     tds[0].active = true;
@@ -81,6 +94,8 @@ class App extends Component {
           collection.todos.map((todo) => {
             if (todo.id === id) {
               if (property === "date") todo[property] = new Date(value);
+              else if (property.slice(0, 4) === "time")
+                todo.time[property.slice(4, -1)] = value;
               else todo[property] = this.trimSpaces(value);
             }
             return todo;
@@ -93,6 +108,7 @@ class App extends Component {
   };
 
   handleAdd = (event, id) => {
+    // To add another Todo
     const newFocus = React.createRef();
 
     const collectiontodos = this.state.collections.filter(
@@ -122,8 +138,6 @@ class App extends Component {
       });
       return updatedCollections;
     });
-
-    // newFocus.current.focus();
   };
 
   render() {
