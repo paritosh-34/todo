@@ -22,10 +22,11 @@ class Todo extends Component {
             onChange={(event) =>
               this.props.handleChange(event, this.props.collection.id)
             }
-            onBlur={(event) => {
-              this.props.handleBlur(event, this.props.collection.id);
-            }}
+            // onBlur={(event) => {
+            //   this.props.handleBlur(event, this.props.collection.id);
+            // }}
             value={this.props.collection.name}
+            ref={this.props.collection.ref}
           />
           <div className="bottom-line"></div>
           <label htmlFor="todos-title" className="edit">

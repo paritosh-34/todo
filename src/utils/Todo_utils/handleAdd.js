@@ -1,6 +1,6 @@
 import React from "react";
 
-function handleAdd(event, id) {
+export default function handleAdd(event, id) {
   // To add another Todo
   const newFocus = React.createRef();
 
@@ -14,8 +14,14 @@ function handleAdd(event, id) {
     desc: "",
     date: new Date(),
     time: {
-      from: new Date(),
-      to: new Date(),
+      from: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      to: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
     },
     completed: false,
     ref: newFocus,
@@ -32,5 +38,3 @@ function handleAdd(event, id) {
     return updatedCollections;
   });
 }
-
-export default handleAdd;

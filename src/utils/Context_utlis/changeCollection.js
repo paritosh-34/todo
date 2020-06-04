@@ -1,4 +1,4 @@
-function changeCollection(id) {
+export default function changeCollection(id) {
   // This Funtion is to change collections
   this.setState((prevState) => {
     const updatedCollections = prevState.collections.map((collection) => {
@@ -10,5 +10,3 @@ function changeCollection(id) {
     return updatedCollections;
   });
 }
-
-export default changeCollection;

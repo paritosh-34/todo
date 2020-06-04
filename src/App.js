@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import Todo from "./components/Todo";
 import Context from "./components/Context";
-// import Calender from "./components/Calender";
+
 import {
   changeCollection,
+  addCollection,
   handleAdd,
   handleChange,
   handleEdit,
   handleBlur,
 } from "./utils";
+
 import todosData from "./Data";
 import "./css/App.css";
 
@@ -40,6 +42,7 @@ class App extends Component {
     };
 
     this.changeCollection = changeCollection.bind(this);
+    this.addCollection = addCollection.bind(this);
     this.handleAdd = handleAdd.bind(this);
     this.handleBlur = handleBlur.bind(this);
     this.handleChange = handleChange.bind(this);
@@ -52,6 +55,7 @@ class App extends Component {
         <Context
           collections={this.state.collections}
           changeCollection={this.changeCollection}
+          addCollection={this.addCollection}
         />
         <Todo
           collection={

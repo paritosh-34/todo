@@ -1,4 +1,4 @@
-function handleBlur(event, id) {
+export default function handleBlur(event, id) {
   // Handles the collection title change on Blur
   const { value } = event.target;
   if (!value) {
@@ -11,5 +11,3 @@ function handleBlur(event, id) {
     });
   }
 }
-
-export default handleBlur;

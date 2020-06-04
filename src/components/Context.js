@@ -13,10 +13,10 @@ class Context extends Component {
         >
           <button title={collection.name}>
             <span key={"identifier-" + collection.id} className="identifier">
-              {collection.name[0]}
+              {collection.name[0] ? collection.name[0] : "---"}
             </span>
             <span key={collection.id} className="collection">
-              {collection.name}
+              {collection.name ? collection.name : "---"}
             </span>
           </button>
         </li>

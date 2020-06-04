@@ -9,9 +9,8 @@ class TodoItem extends Component {
     document.execCommand("insertHTML", false, text);
   };
 
-  componentDidMount = () => {
-    if (this.props.todo.ref) this.props.todo.ref.current.focus();
-  };
+  componentDidMount = () =>
+    this.props.todo.ref ? this.props.todo.ref.current.focus() : null;
 
   handleEnter = (event) => (event.keyCode === 13 ? event.target.blur() : null);
 

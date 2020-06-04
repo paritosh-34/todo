@@ -1,4 +1,4 @@
-function handleChange(event, id) {
+export default function handleChange(event, id) {
   // Handles the collection title change
   const { value } = event.target;
   this.setState((prevState) => {
@@ -9,5 +9,3 @@ function handleChange(event, id) {
     return updatedCollections;
   });
 }
-
-export default handleChange;

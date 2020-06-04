@@ -7,7 +7,7 @@ function trimSpaces(string) {
   // .replace("<div><br></div>", "\n");
 }
 
-function handleEdit(event, id, property) {
+export default function handleEdit(event, id, property) {
   // Handles todos edits
   const { value } = event.target;
   const collection_id = this.state.collections.filter(
@@ -32,4 +32,3 @@ function handleEdit(event, id, property) {
     return updatedCollections;
   });
 }
-export default handleEdit;
