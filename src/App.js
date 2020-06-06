@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Todo from "./components/Todo";
 import Context from "./components/Context";
 
@@ -17,6 +18,11 @@ import "./css/App.css";
 class App extends Component {
   constructor() {
     super();
+
+    axios
+      .get("/todos")
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
 
     const tds = todosData.collections.map((collection) => {
       collection.active = false;
