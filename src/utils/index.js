@@ -4,3 +4,6 @@ export { default as handleBlur } from "./Todo_utils/handleBlur";
 export { default as handleEdit } from "./Todo_utils/handleEdit";
 export { default as handleChange } from "./Todo_utils/handleChange";
 export { default as addCollection } from "./Context_utlis/addCollection";
+export { default as changeColor } from "./Todo_utils/changeColor";
+export { default as handleChecked } from "./Todo_utils/handleChecked";
+export { default as deleteTodo } from "./Todo_utils/deleteTodo";

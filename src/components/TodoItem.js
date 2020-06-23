@@ -15,21 +15,62 @@ class TodoItem extends Component {
   handleEnter = (event) => (event.keyCode === 13 ? event.target.blur() : null);
 
   render() {
+    const completedStyleTodoItem = {
+      backgroundColor: this.props.color,
+      color: "white",
+    };
+    const completedStyleTodoTime = {
+      backgroundColor: "inherit",
+      color: "whitesmoke",
+      outline: "none",
+    };
     return (
-      <div className="todo-item">
+      <div
+        className="todo-item"
+        style={this.props.todo.completed ? completedStyleTodoItem : null}
+      >
         <div className="todo-heading-desc-wrapper">
-          <ContentEditable
-            html={this.props.todo.heading}
-            disabled={false}
-            onPaste={this.pasteAsPlainText}
-            onChange={(event) =>
-              this.props.handleEdit(event, this.props.todo.id, "heading")
-            }
-            tagName="h3"
-            className="todo-heading"
-            placeholder="Title"
-            innerRef={this.props.todo.ref}
-          />
+          <div className="todo-heading-wrapper">
+            <ContentEditable
+              html={this.props.todo.heading}
+              disabled={false}
+              onPaste={this.pasteAsPlainText}
+              onChange={(event) =>
+                this.props.handleEdit(event, this.props.todo.id, "heading")
+              }
+              tagName="h3"
+              className="todo-heading"
+              placeholder="Title"
+              innerRef={this.props.todo.ref}
+            />
+
+            <div className="checker">
+              <span
+                className="material-icons"
+                style={{ color: this.props.todo.completed ? "white" : "red" }}
+                onClick={() => {
+                  this.props.deleteTodo(
+                    this.props.collection_id,
+                    this.props.todo.id
+                  );
+                }}
+              >
+                delete
+              </span>
+              <input
+                type="checkbox"
+                name="isCompleted"
+                checked={this.props.todo.completed}
+                onChange={(event) => {
+                  this.props.handleChecked(
+                    event,
+                    this.props.collection_id,
+                    this.props.todo.id
+                  );
+                }}
+              />
+            </div>
+          </div>
 
           <ContentEditable
             html={this.props.todo.desc}
@@ -56,7 +97,10 @@ class TodoItem extends Component {
             />
           </div>
 
-          <div className="todo-time">
+          <div
+            className="todo-time"
+            style={this.props.todo.completed ? completedStyleTodoTime : null}
+          >
             <input
               type="text"
               value={this.props.todo.time.from}
@@ -70,7 +114,12 @@ class TodoItem extends Component {
                 event.target.style.width = event.target.value.length + "ch";
                 this.handleEnter(event);
               }}
-            />{" "}
+              style={
+                this.props.todo.completed
+                  ? completedStyleTodoTime
+                  : { outline: "none" }
+              }
+            />
             -{" "}
             <input
               type="text"
@@ -85,6 +134,11 @@ class TodoItem extends Component {
                 event.target.style.width = event.target.value.length + "ch";
                 this.handleEnter(event);
               }}
+              style={
+                this.props.todo.completed
+                  ? completedStyleTodoTime
+                  : { outline: "none" }
+              }
             />
           </div>
         </div>

@@ -9,11 +9,30 @@ class Todo extends Component {
         todo={todo}
         handleEdit={this.props.handleEdit}
         firstEditable={this.props.firstEditable}
+        color={this.props.collection.color}
+        handleChecked={this.props.handleChecked}
+        collection_id={this.props.collection.id}
+        deleteTodo={this.props.deleteTodo}
       />
     ));
     return (
       <div className="todos">
         <div className="todos-title">
+          <div className="color-picker">
+            <span
+              className="material-icons"
+              style={{ color: this.props.collection.color }}
+            >
+              palette
+            </span>
+            <input
+              type="color"
+              value={this.props.collection.color}
+              onChange={(event) => {
+                this.props.changeColor(event, this.props.collection.id);
+              }}
+            />
+          </div>
           <input
             type="text"
             name="todos-title"

@@ -131,8 +131,8 @@
 }
 
 .logo {
+  margin-top: 15px;
   font-size: 2em;
-  position: absolute;
   text-align: center;
   width: 100%;
   left: 0;

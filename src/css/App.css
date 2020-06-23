@@ -7,6 +7,19 @@
   overflow: hidden;
 }
 
+.color-picker {
+  position: relative;
+  margin-right: 5px;
+}
+
+.color-picker input {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
 .todos-title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -149,6 +162,41 @@
     -webkit-box-shadow: 5px 5px 5px #eeeeee, -5px 5px 5px #eeeeee;
             box-shadow: 5px 5px 5px #eeeeee, -5px 5px 5px #eeeeee;
   }
+}
+
+.todo-heading-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.checker {
+  position: relative;
+  margin: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.checker input {
+  width: 24px;
+  height: 24px;
+}
+
+.checker span {
+  opacity: 0.6;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.checker span:hover {
+  opacity: 1;
 }
 
 .todo-heading {
@@ -339,8 +387,8 @@
 }
 
 .logo {
+  margin-top: 15px;
   font-size: 2em;
-  position: absolute;
   text-align: center;
   width: 100%;
   left: 0;

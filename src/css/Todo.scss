@@ -9,6 +9,19 @@
   overflow: hidden;
 }
 
+.color-picker {
+  position: relative;
+  margin-right: 5px;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
 .todos-title {
   display: flex;
   position: relative;
@@ -121,6 +134,40 @@
     box-shadow: 5px 5px 5px $border-color, -5px 5px 5px $border-color;
   }
 }
+
+.todo-heading-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checker {
+  position: relative;
+  margin: 25px;
+  display: flex;
+  justify-content: space-evenly;
+
+  input {
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    opacity: 0.6;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  span:hover {
+    opacity: 1;
+  }
+}
+
+// .custom-checkbox {
+//   display: inline-block;
+//   width: 25px;
+//   height: 25px;
+//   border: 1px solid white;
+//   border-radius: 2px;
+// }
 
 .todo-heading {
   padding: 10px 15px;

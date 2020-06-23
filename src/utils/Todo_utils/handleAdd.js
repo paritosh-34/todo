@@ -8,8 +8,10 @@ export default function handleAdd(event, id) {
     (collection) => collection.id === id
   )[0];
 
+  const lastID = collectiontodos.todos[collectiontodos.todos.length - 1].id;
+
   const newTodo = {
-    id: collectiontodos.todos.length + 1,
+    id: lastID + 1,
     heading: "",
     desc: "",
     date: new Date(),

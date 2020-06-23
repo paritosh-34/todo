@@ -10,6 +10,9 @@ import {
   handleChange,
   handleEdit,
   handleBlur,
+  handleChecked,
+  changeColor,
+  deleteTodo,
 } from "./utils";
 
 import todosData from "./Data";
@@ -53,6 +56,9 @@ class App extends Component {
     this.handleBlur = handleBlur.bind(this);
     this.handleChange = handleChange.bind(this);
     this.handleEdit = handleEdit.bind(this);
+    this.changeColor = changeColor.bind(this);
+    this.handleChecked = handleChecked.bind(this);
+    this.deleteTodo = deleteTodo.bind(this);
   }
 
   render() {
@@ -72,6 +78,9 @@ class App extends Component {
           handleEdit={this.handleEdit}
           handleAdd={this.handleAdd}
           firstEditable={this.firstEditable}
+          changeColor={this.changeColor}
+          handleChecked={this.handleChecked}
+          deleteTodo={this.deleteTodo}
         />
       </div>
     );
