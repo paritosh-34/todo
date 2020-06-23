@@ -10,7 +10,10 @@
 
 .App {
   display: grid;
-  grid: "context todos" / minmax(100px, 300px) minmax(600px, 1fr);
+  grid: "context todos calender" / minmax(100px, 300px) minmax(600px, 1fr) minmax(
+      300px,
+      1fr
+    );
   min-height: 100vh;
   overflow: auto;
 }
@@ -22,6 +25,10 @@
 
 .todos {
   grid-area: todos;
+}
+
+.calender {
+  grid-area: calender;
 }
 
 [contenteditable="true"]:empty:before {
@@ -41,6 +48,9 @@
   // }
   .context {
     font-size: 0.8em;
+  }
+  .calender {
+    display: none;
   }
   .App {
     grid: "context todos" / minmax(50px, 80px) minmax(300px, 1fr);

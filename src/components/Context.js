@@ -26,11 +26,11 @@ class Context extends Component {
     return (
       <div className="context">
         <div className="heading">
-          <div className="menu">
+          {/* <div className="menu">
             <i className="material-icons" style={{ fontSize: "2em" }}>
               menu
             </i>
-          </div>
+          </div> */}
 
           <div className="logo">To-Do</div>
         </div>

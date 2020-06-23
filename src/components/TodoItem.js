@@ -31,7 +31,7 @@ class TodoItem extends Component {
             innerRef={this.props.todo.ref}
           />
 
-          <ContentEditable
+          {/* <ContentEditable
             html={this.props.todo.desc}
             disabled={false}
             onPaste={this.pasteAsPlainText}
@@ -41,7 +41,7 @@ class TodoItem extends Component {
             tagName="p"
             className="todo-desc"
             placeholder="----"
-          />
+          /> */}
         </div>
 
         <div className="todo-date-time-wrapper">

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Todo from "./components/Todo";
 import Context from "./components/Context";
+import Calender from "./components/Calender";
 
 import {
   changeCollection,
@@ -20,24 +21,27 @@ class App extends Component {
     super();
 
     axios
-      .get("/todos")
-      .then((data) => console.log(data))
+      .post(`http://localhost:5000/todos`, todosData)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
       .catch((err) => console.log(err));
 
     const tds = todosData.collections.map((collection) => {
       collection.active = false;
 
-      collection.todos.map((todo) => {
-        todo.time.from = todo.time.from.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-        todo.time.to = todo.time.to.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-        return todo;
-      });
+      // collection.todos.map((todo) => {
+      //   todo.time.from = todo.time.from.toLocaleTimeString([], {
+      //     hour: "2-digit",
+      //     minute: "2-digit",
+      //   });
+      //   todo.time.to = todo.time.to.toLocaleTimeString([], {
+      //     hour: "2-digit",
+      //     minute: "2-digit",
+      //   });
+      //   return todo;
+      // });
 
       return collection;
     });
@@ -73,6 +77,7 @@ class App extends Component {
           handleAdd={this.handleAdd}
           firstEditable={this.firstEditable}
         />
+        <Calender collections={this.state.collections} />
       </div>
     );
   }
